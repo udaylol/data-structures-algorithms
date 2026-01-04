@@ -11,5 +11,8 @@ public class Main {
         BinarySearchTree tree2 = new BinarySearchTree();
         tree2.build(vals);
         tree2.printTree();
+
+        System.out.println(BinaryTreeUtils.diameter(tree1.root));
+        System.out.println(BinaryTreeUtils.diameter(tree2.root));
     }
 }

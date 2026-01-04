@@ -103,7 +103,7 @@ class BinaryTree {
         if (node == null) return;
         printTree(node.right, depth + 1);
         for (int i = 0; i < depth; i++) {
-            System.out.print("    ");
+            System.out.print("   ");
         }
         System.out.println(node.data);
         printTree(node.left, depth + 1);

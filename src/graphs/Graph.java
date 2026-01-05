@@ -13,7 +13,7 @@ class Graph {
 
         @Override
         public String toString() {
-            return "(data: " + data + ")";
+            return "(" + data + ")";
         }
     }
 
@@ -49,7 +49,7 @@ class Graph {
         sc.nextLine();
 
         System.out.println("Enter " + V + " data entries: ");
-        List<String> data = new ArrayList<>();
+        List<String> data = new ArrayList<>(V);
         for (int i = 0; i < V; i++) {
             System.out.print("data " + i + ": ");
             data.add(sc.nextLine());
@@ -59,7 +59,7 @@ class Graph {
         int E = sc.nextInt();
 
         System.out.println("Enter " + E + " edges: ");
-        List<int[]> edges = new ArrayList<>();
+        List<int[]> edges = new ArrayList<>(E);
         for (int i = 0; i < E; i++) {
             System.out.print("edge " + i + ": ");
             edges.add(new int[]{sc.nextInt(), sc.nextInt()});
@@ -70,7 +70,7 @@ class Graph {
 
     void print() {
         for (int i = 0; i < nodes.size(); i++) {
-            System.out.println(i + " : " + nodes.get(i) +  " : " + nodes.get(i).neighbors);
+            System.out.println(i + " : " + nodes.get(i) +  " is connected to " + nodes.get(i).neighbors);
         }
         System.out.println();
     }

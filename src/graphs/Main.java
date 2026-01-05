@@ -7,6 +7,7 @@ public class Main {
 
         Graph graph = Graph.readFromInput(sc);
 
+        System.out.println("\nGraph:");
         graph.print();
 
         System.out.println("\nDFS:");

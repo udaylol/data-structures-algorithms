@@ -27,7 +27,7 @@ public class BFS {
         while (!queue.isEmpty()) {
             int curr = queue.remove();
             System.out.print(curr + " ");
-            for (int neighbor: graph.get(curr)) {
+            for (int neighbor : graph.get(curr)) {
                 if (!visited[neighbor]) {
                     queue.add(neighbor);
                     visited[neighbor] = true;

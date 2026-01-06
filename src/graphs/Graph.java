@@ -30,6 +30,10 @@ public class Graph {
     }
 
     static List<List<Integer>> input() {
+        return input(false);
+    }
+
+    static List<List<Integer>> input(boolean isDirected) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Number of vertices: ");
         int v = sc.nextInt();
@@ -38,12 +42,7 @@ public class Graph {
         int e = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Directed? (Y/N): ");
-        char c = sc.nextLine().trim().toLowerCase().charAt(0);
-        boolean isDirected = c == 'y';
-
         List<int[]> edges = new ArrayList<>(e);
-
         for (int i = 0; i < e; i++) {
             System.out.print("edge " + i + ": ");
             int a = sc.nextInt();

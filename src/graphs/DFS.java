@@ -22,7 +22,7 @@ class DFS {
     static void dfs(List<List<Integer>> graph, int node, boolean[] visited) {
         System.out.print(node + " ");
         visited[node] = true;
-        for (int neighbor: graph.get(node)) {
+        for (int neighbor : graph.get(node)) {
             if (!visited[neighbor]) {
                 dfs(graph, neighbor, visited);
             }

@@ -2,7 +2,7 @@ package graphs;
 
 import java.util.*;
 
-public class CheckBipartite {
+class CheckBipartite {
     static Boolean[] colors;
 
     static boolean checkBipartite(List<List<Integer>> graph) {

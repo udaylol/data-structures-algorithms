@@ -2,7 +2,7 @@ package graphs;
 
 import java.util.*;
 
-public class TopologicalSort {
+class TopologicalSort {
     static boolean[] visited;
 
     static List<Integer> topologicalSortDFS(List<List<Integer>> graph) {

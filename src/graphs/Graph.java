@@ -2,7 +2,7 @@ package graphs;
 
 import java.util.*;
 
-public class Graph {
+class Graph {
 
     private static List<List<Integer>> build(int v, List<int[]> edges, boolean isDirected) {
         List<List<Integer>> graph = new ArrayList<>();

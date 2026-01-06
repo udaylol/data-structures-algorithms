@@ -2,7 +2,7 @@ package graphs;
 
 import java.util.List;
 
-public class DetectCycle {
+class DetectCycleUndirected {
     static boolean[] visited;
 
     static boolean detectCycle(List<List<Integer>> graph) {

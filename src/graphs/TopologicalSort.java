@@ -5,7 +5,7 @@ import java.util.*;
 public class TopologicalSort {
     static boolean[] visited;
 
-    static List<Integer> topologicalSort(List<List<Integer>> graph) {
+    static List<Integer> topologicalSortDFS(List<List<Integer>> graph) {
         int v = graph.size();
         visited = new boolean[v];
         List<Integer> ans = new ArrayList<>();
@@ -32,9 +32,42 @@ public class TopologicalSort {
         stack.push(node);
     }
 
+    static List<Integer> topologicalSortBFS(List<List<Integer>> graph) {
+        int v = graph.size();
+        int[] indegree = new int[v];
+        List<Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < v; i++) {
+            for (int neighbor : graph.get(i)) {
+                indegree[neighbor]++;
+            }
+        }
+        Queue<Integer> queue = new ArrayDeque<>();
+        for (int i = 0; i < v; i++) {
+            if (indegree[i] == 0) {
+                queue.add(i);
+            }
+        }
+        while (!queue.isEmpty()) {
+            int node = queue.remove();
+            ans.add(node);
+
+            for (int neighbor : graph.get(node)) {
+                indegree[neighbor]--;
+                if (indegree[neighbor] == 0) {
+                    queue.add(neighbor);
+                }
+            }
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
         List<List<Integer>> graph = Graph.input(true);
-        List<Integer> list = topologicalSort(graph);
-        System.out.println(list);
+        List<Integer> listDFS = topologicalSortDFS(graph);
+        List<Integer> listBFS = topologicalSortBFS(graph);
+        System.out.println(listDFS);
+        System.out.println(listDFS);
     }
 }

@@ -77,80 +77,68 @@ class BinaryTree {
         return ans;
     }
 
-    List<List<Integer>> verticalorderDFS2() {
-        Map<Integer, List<Integer>> map = new TreeMap<>();
-        List<List<Integer>> ans = new ArrayList<>();
-        verticalHelperDFS2(root, 0, map);
-        ans.addAll(map.values());
-        return ans;
-    }
-    private void verticalHelperDFS2(TreeNode root, int col, Map<Integer, List<Integer>> map) {
-        if (root == null) return;
-
-        map.computeIfAbsent(col, k -> new ArrayList<>()).add(root.data);
-
-        verticalHelperDFS2(root.left, col-1, map);
-        verticalHelperDFS2(root.right, col+1, map);
-    }
-
-    static class Info1 {
+    static class InfoDFS {
         int row, col, val;
-        Info1(int r, int c, int v) {
+
+        InfoDFS(int r, int c, int v) {
             row = r;
             col = c;
             val = v;
         }
     }
 
-    List<List<Integer>> verticalorderDFS1() {
+    List<List<Integer>> verticalorderDFS() {
         List<List<Integer>> ans = new ArrayList<>();
-        List<Info1> nodes = new ArrayList<>();
-        verticalHelperDFS1(root, 0, 0, nodes);
+        List<InfoDFS> nodes = new ArrayList<>();
+        verticalHelperDFS(root, 0, 0, nodes);
 
-        nodes.sort((a,b)->{
+        nodes.sort((a, b) -> {
             if (a.col != b.col) return Integer.compare(a.col, b.col);
             if (a.row != b.row) return Integer.compare(a.row, b.row);
             return Integer.compare(a.val, b.val);
         });
 
         int prevCol = Integer.MIN_VALUE;
-        for (Info1 node: nodes) {
+        for (InfoDFS node : nodes) {
             int col = node.col;
             int val = node.val;
             if (col != prevCol) {
                 ans.add(new ArrayList<>());
                 prevCol = col;
             }
-            ans.getLast().add(node.val);
+            ans.getLast().add(val);
         }
         return ans;
     }
-    private void verticalHelperDFS1(TreeNode root, int r, int c, List<Info1> nodes) {
+
+    private void verticalHelperDFS(TreeNode root, int r, int c, List<InfoDFS> nodes) {
         if (root == null) return;
 
-        nodes.add(new Info1(r, c, root.data));
-        verticalHelperDFS1(root.left, r+1, c-1, nodes);
-        verticalHelperDFS1(root.right, r+1, c+1, nodes);
+        nodes.add(new InfoDFS(r, c, root.data));
+        verticalHelperDFS(root.left, r + 1, c - 1, nodes);
+        verticalHelperDFS(root.right, r + 1, c + 1, nodes);
     }
 
-    static class Info2 {
+    static class InfoBFS {
         TreeNode node;
         int col;
-        Info2(TreeNode n, int c) {
+
+        InfoBFS(TreeNode n, int c) {
             node = n;
             col = c;
         }
     }
+
     List<List<Integer>> verticalorderBFS() {
         List<List<Integer>> ans = new ArrayList<>();
-        Queue<Info2> queue = new ArrayDeque<>();
-        queue.add(new Info2(root, 0));
+        Queue<InfoBFS> queue = new ArrayDeque<>();
+        queue.add(new InfoBFS(root, 0));
 
         Map<Integer, List<Integer>> map = new HashMap<>();
         int minCol = 0, maxCol = 0;
 
         while (!queue.isEmpty()) {
-            Info2 curr = queue.remove();
+            InfoBFS curr = queue.remove();
             TreeNode node = curr.node;
             int col = curr.col;
 
@@ -159,8 +147,8 @@ class BinaryTree {
 
             map.computeIfAbsent(col, k -> new ArrayList<>()).add(node.data);
 
-            if (node.left != null) queue.add(new Info2(node.left, col-1));
-            if (node.right != null) queue.add(new Info2(node.right, col+1));
+            if (node.left != null) queue.add(new InfoBFS(node.left, col - 1));
+            if (node.right != null) queue.add(new InfoBFS(node.right, col + 1));
         }
         for (int i = minCol; i <= maxCol; i++) {
             ans.add(map.get(i));

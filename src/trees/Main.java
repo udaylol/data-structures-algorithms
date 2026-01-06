@@ -7,8 +7,7 @@ public class Main {
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.build(vals);
         binaryTree.printTree();
-        System.out.println(binaryTree.verticalorderDFS1());
-        System.out.println(binaryTree.verticalorderDFS2());
+        System.out.println(binaryTree.verticalorderDFS());
         System.out.println(binaryTree.verticalorderBFS());
     }
 }

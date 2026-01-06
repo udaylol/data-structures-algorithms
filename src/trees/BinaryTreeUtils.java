@@ -1,8 +1,10 @@
 package trees;
 
-public class BinaryTreeUtils {
+import java.util.List;
 
-    public static int diameter(TreeNode root) {
+class BinaryTreeUtils {
+
+    static int diameter(TreeNode root) {
         int[] diameter = new int[1];
         diameterHelper(root, diameter);
         return diameter[0];

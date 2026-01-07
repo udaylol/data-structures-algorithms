@@ -3,20 +3,6 @@ package graphs;
 import java.util.*;
 
 class Graph {
-    static class Edge {
-        int to;
-        int weight;
-
-        Edge(int to, int weight) {
-            this.to = to;
-            this.weight = weight;
-        }
-
-        @Override
-        public String toString() {
-            return "(" + to + ", w=" + weight + ")";
-        }
-    }
 
     private static List<List<Integer>> build(int v, List<int[]> edges, boolean isDirected) {
         List<List<Integer>> graph = new ArrayList<>();

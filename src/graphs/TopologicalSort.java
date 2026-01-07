@@ -60,14 +60,17 @@ class TopologicalSort {
             }
         }
 
+        if (ans.size() != v) {
+            throw new IllegalStateException("Graph has a cycle. Topological sort not possible.");
+        }
         return ans;
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> graph = Graph.input(true);
+        List<List<Integer>> graph = Graph.inputDirected();
         List<Integer> listDFS = topologicalSortDFS(graph);
         List<Integer> listBFS = topologicalSortBFS(graph);
         System.out.println(listDFS);
-        System.out.println(listDFS);
+        System.out.println(listBFS);
     }
 }

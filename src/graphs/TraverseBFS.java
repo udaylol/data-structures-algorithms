@@ -2,7 +2,7 @@ package graphs;
 
 import java.util.*;
 
-class BFS {
+class TraverseBFS {
     static boolean[] visited;
 
     static void traverse(List<List<Integer>> graph) {

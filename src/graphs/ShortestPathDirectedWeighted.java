@@ -2,7 +2,7 @@ package graphs;
 
 import java.util.*;
 
-public class ShortestPath {
+public class ShortestPathDirectedWeighted {
 
     static long[] shortestPath(List<List<Edge>> graph, int src) {
         int V = graph.size();

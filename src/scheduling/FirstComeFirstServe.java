@@ -12,8 +12,8 @@ class FirstComeFirstServe {
 
         int currTime = 0;
         int idleTime = 0;
-        int totalWT = 0;
-        int totalTAT = 0;
+        double totalWT = 0;
+        double totalTAT = 0;
 
         System.out.println("=== Scheduling Timeline ===");
 
@@ -33,18 +33,18 @@ class FirstComeFirstServe {
             System.out.printf("Time %d → %d : Executing Task %d\n", start, end, task.pid);
 
             int waitingTime = start - task.arrivalTime;
-            int turnaroundTime = waitingTime + task.burstTime;
+            int turnAroundTime = waitingTime + task.burstTime;
 
             totalWT += waitingTime;
-            totalTAT += turnaroundTime;
+            totalTAT += turnAroundTime;
 
             currTime = end;
         }
 
         System.out.println("\n=== Statistics ===");
 
-        System.out.printf("Average Waiting Time = %.2f\n", (double) totalWT / tasks.length);
-        System.out.printf("Average Turnaround Time = %.2f\n", (double) totalTAT / tasks.length);
+        System.out.printf("Average Waiting Time = %.2f\n", totalWT / tasks.length);
+        System.out.printf("Average Turnaround Time = %.2f\n", totalTAT / tasks.length);
         System.out.println("CPU Idle Time = " + idleTime);
         System.out.println("Total Time Elapsed = " + currTime);
     }
